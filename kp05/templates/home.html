@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Message Board{% endblock %}
+
+{% block content %}
+<h1>Message Board</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Text</th>
+      <th>Date</th>
+      <th>Temperature</th>
+      <th>Pressure</th>
+      <th>Wind speed</th>
+      <th>Precipitation probability</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in post_list %}
+    <tr>
+      <td><a href="{% url 'detail' post.pk %}">{{ post.pk }}</a></td>
+      <td>{{ post.text }}</td>
+      <td>{{ post.date|default:"-" }}</td>
+      <td>{{ post.temperature|default:"-" }}</td>
+      <td>{{ post.pressure|default:"-" }}</td>
+      <td>{{ post.wind_speed|default:"-" }}</td>
+      <td>{{ post.precipitation_probability|default:"-" }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="7">No measurements yet</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

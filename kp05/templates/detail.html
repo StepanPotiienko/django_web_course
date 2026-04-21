@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Measurement #{{ post.pk }}{% endblock %}
+
+{% block content %}
+<h1>Measurement #{{ post.pk }}</h1>
+<table>
+  <tr><th>ID</th><td>{{ post.pk }}</td></tr>
+  <tr><th>Text</th><td>{{ post.text }}</td></tr>
+  <tr><th>Date</th><td>{{ post.date|default:"-" }}</td></tr>
+  <tr><th>Temperature</th><td>{{ post.temperature|default:"-" }}</td></tr>
+  <tr><th>Pressure</th><td>{{ post.pressure|default:"-" }}</td></tr>
+  <tr><th>Wind speed</th><td>{{ post.wind_speed|default:"-" }}</td></tr>
+  <tr><th>Precipitation probability</th><td>{{ post.precipitation_probability|default:"-" }}</td></tr>
+</table>
+<p><a href="{% url 'home' %}">Back to list</a></p>
+{% endblock %}
