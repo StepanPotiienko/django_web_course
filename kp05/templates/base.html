@@ -4,15 +4,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}Message Board{% endblock %}</title>
+    <title>{% block title %}Beautiful Weather App{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
     <header>
       <a href="{% url 'home' %}">Home</a>
     </header>
-    <main>
-      {% block content %}{% endblock %}
-    </main>
+    <main>{% block content %}{% endblock %}</main>
   </body>
 </html>
