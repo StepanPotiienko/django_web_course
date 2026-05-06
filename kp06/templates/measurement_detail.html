@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Вимірювання #{{ object.pk }}{% endblock %}
+
+{% block content %}
+<div class="post-entry">
+  <h2>Вимірювання #{{ object.pk }}</h2>
+  <table>
+    <tr><th>id</th><td>{{ object.pk }}</td></tr>
+    <tr><th>Текст</th><td>{{ object.text }}</td></tr>
+    <tr><th>Дата</th><td>{{ object.date|default:"-" }}</td></tr>
+    <tr><th>Температура, С</th><td>{{ object.temperature|default:"-" }}</td></tr>
+    <tr><th>Тиск, мм.р.ст.</th><td>{{ object.pressure|default:"-" }}</td></tr>
+    <tr><th>Швидкість вітру</th><td>{{ object.wind_speed|default:"-" }}</td></tr>
+    <tr><th>Ймовірність опадів</th><td>{{ object.precipitation_probability|default:"-" }}</td></tr>
+  </table>
+  <p>
+    <a href="{% url 'weather_list' %}">Назад до списку вимірювань</a> |
+    <a href="{% url 'measurement_edit' object.pk %}">+ Edit Measurement</a> |
+    <a href="{% url 'measurement_delete' object.pk %}">+ Delete Measurement</a>
+  </p>
+</div>
+{% endblock %}

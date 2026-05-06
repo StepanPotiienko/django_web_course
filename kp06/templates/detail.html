@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Вимірювання #{{ post.pk }}{% endblock %}
+
+{% block content %}
+<div class="post-entry">
+  <h2>Вимірювання #{{ post.pk }}</h2>
+  <table>
+    <tr><th>id</th><td>{{ post.pk }}</td></tr>
+    <tr><th>Текст</th><td>{{ post.text }}</td></tr>
+    <tr><th>Дата</th><td>{{ post.date|default:"-" }}</td></tr>
+    <tr><th>Температура, С</th><td>{{ post.temperature|default:"-" }}</td></tr>
+    <tr><th>Тиск, мм.р.ст.</th><td>{{ post.pressure|default:"-" }}</td></tr>
+    <tr><th>Швидкість вітру</th><td>{{ post.wind_speed|default:"-" }}</td></tr>
+    <tr><th>Ймовірність опадів</th><td>{{ post.precipitation_probability|default:"-" }}</td></tr>
+  </table>
+  <p><a href="{% url 'home' %}">Назад до списку</a></p>
+</div>
+{% endblock %}

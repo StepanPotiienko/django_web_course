@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Видалення вимірювання #{{ object.pk }}{% endblock %}
+
+{% block content %}
+<h1>Видалення вимірювання</h1>
+<form method="post">
+  {% csrf_token %}
+  <p>Ви впевнені, що хочете видалити вимірювання #{{ object.pk }}?"{{ object.text }}"?</p>
+  <input type="submit" value="Підтвердити">
+</form>
+{% endblock %}

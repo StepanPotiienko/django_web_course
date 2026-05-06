@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+
+{% block title %}Дошка атмосферних вимірювань{% endblock %}
+
+{% block content %}
+<h1>Дошка атмосферних вимірювань</h1>
+<p><a href="{% url 'measurement_new' %}">+ New Measurement</a></p>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Текст</th>
+      <th>Дата</th>
+      <th>Температура, С</th>
+      <th>Тиск, мм.р.ст.</th>
+      <th>Швидкість вітру</th>
+      <th>Ймовірність опадів</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for measurement in measurement_list %}
+    <tr>
+      <td><a href="{% url 'measurement_detail' measurement.pk %}">{{ measurement.pk }}</a></td>
+      <td>{{ measurement.text }}</td>
+      <td>{{ measurement.date|default:"-" }}</td>
+      <td>{{ measurement.temperature|default:"-" }}</td>
+      <td>{{ measurement.pressure|default:"-" }}</td>
+      <td>{{ measurement.wind_speed|default:"-" }}</td>
+      <td>{{ measurement.precipitation_probability|default:"-" }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="7">Поки немає вимірювань</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
